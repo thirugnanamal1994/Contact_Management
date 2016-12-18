@@ -1,0 +1,65 @@
+<div id="headerinview" class="col-sm-12 col-md-12 col-xs-12" style="padding:5px;">
+    <div class="col-sm-8 col-md-8 col-xs-4  " style="color:white;font-size:24px;">
+        <span ng-bind="tab_title"></span>
+    </div>
+    <div class="col-sm-4 col-md-4 col-xs-8" style="padding:0pxcolor:white;;">
+        <div class="col-sm-6 col-md-6 col-xs-6" style="padding:5px;">
+            <a href="#/addcontact" ng-click="addnewContact()"  class="btn btn-md btn-success" style="width:100%;">Add Contact</a>
+        </div>
+        <div class="col-sm-6 col-md-6 col-xs-6" style="padding:5px;">
+            <a href="#/listcontact" ng-click="" class="btn btn-md btn-warning" ng-click="searchcontact=true;refresh();" style="width:100%;" >View Contacts</a>
+        </div>
+    </div>
+</div>   
+<table class = "table table-hover" ng-init="refresh()">
+    <thead>
+        <tr class="active">
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Contact Name</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Mobile Number</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Telephone Number</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Email Id</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">City</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Action</th>
+        </tr>
+        <tr class="active">
+            <td class="col-sm-2 col-md-3 col-xs-2 text-center"><input type="text" style="width:100%;" placeholder="Search.." ng-model="search.Contact_Name"/></td>
+            <td class="col-sm-2 col-md-1 col-xs-2 text-center"><input type="text" style="width:100%;" placeholder="Search.." ng-model="search.Contact_Mobile_No"/></td>
+            <td class="col-sm-2 col-md-1 col-xs-2 text-center"><input type="text" style="width:100%;" placeholder="Search.." ng-model="search.Contact_Telephone_No"/></td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center"><input type="text" style="width:100%;" placeholder="Search.." ng-model="search.Contact_Email"/></td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center"><input type="text" style="width:100%;" placeholder="Search.." ng-model="search.Contact_City"/></td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center"></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-if="contact_list.length" class= "success" ng-repeat="contact in contact_list | filter:search">
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center" ng-bind="contact.Contact_Name"></td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center" ng-bind="contact.Contact_Mobile_No"></td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center" ng-bind="contact.Contact_Telephone_No"></td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center" ng-bind="contact.Contact_Email"></td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center" ng-bind="contact.Contact_City"></td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center">
+                <div class="col-sm-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-sm-12 col-md-6 col-xs-12" style="padding:0px;padding-top:1px;padding-bottom:1px;">
+                        <a href="#/addcontact" class="btn btn-md btn-primary" ng-click="editcontact(contact);tab_title='Edit Contact'" style="width:80px;">Edit</a>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xs-12" style="padding:0px;padding-top:1px;padding-bottom:1px;">
+                        <a href="#/listcontact" class="btn btn-md btn-danger" style="width:80px;" confirmed-click="deletecontact(contact)" ng-confirm-click="Would you like to Delete {{contact.Contact_Name}} Contact?" >Delete</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr class="danger" ng-show="(contact_list | filter:search).length==0">
+            <td colspan="6" class="text-center">
+                <span style="font-size:20px;">No Contacts Match !!</span>
+                <br>
+            </td>
+        </tr>
+        <tr class= "danger" ng-show="!contact_list.length">
+            <td colspan="6" class="text-center">
+                <span style="font-size:20px;">No Contacts are Available !!</span>
+                <br>
+                <a href="#/addcontact" class="btn btn-sm btn-info">Add New Contact</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

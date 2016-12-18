@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+    
+    <input type="text" id="locationgenerator" placeholder="start typing here"></input>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signedin=true&libraries=places"></script>
+    <script type="text/javascript">
+        google.maps.event.addDomListener(window,'load',initialize);
+        function initialize (){
+            var autocomplete=new google.maps.places.Autocomplete(document.getElementById('locationgenerator'));
+            google.maps.events.addListener(autocomplete,function(){
+            var places=autocomplete.getplace();
+        });
+        document.getElementById('locationgenerator').innerHTML=places;
+    };
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>   <!--./lib/bootstrap.min.css-->
+        <script src="./lib/js/angular.min.js"></script>
+        <script src="./lib/js/angular-route.js"></script>
+        <script src="./lib/js/angular-messages.min.js"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+        <script src="./javascripts/controller/maincontroller.js"></script>
+        <style>
+            body{
+                background-color:#566573;
+            }
+            #content{
+                margin-top:70px;
+            }
+            #Header_title{
+                color:white;
+                padding:0px;
+            }
+            caption{
+                text-align:center;
+                color:white;
+            }
+            table{
+                table-layout: fixed;
+                width:100%;
+            }
+            table thead tr th{
+                background-color:navajowhite; 
+            }
+            table tbody tr td{
+                word-wrap:break-word;
+            }
+            /*Disable Spinner in input type number box*/
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+            }
+        </style>
+    </head>
+    <body ng-app="contactmanagment_app" >
+        <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top">
+            <div class="container" id="Header_title" style="margin:0px;">
+              <h1 style="margin:0px;"><img src="./images/logo.png" height="70px;" width="15%"></img> Contact Managment</h1>  
+            </div>
+        </nav>
+        <div id="content">
+            <ng-view id="viewloadmap"></ng-view>
+        </div>
+        <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signedin=true&libraries=places"></script>-->
+    </body>
+</html>

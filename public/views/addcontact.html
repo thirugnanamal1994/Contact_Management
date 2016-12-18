@@ -1,0 +1,59 @@
+<div id="headerinview" class="col-sm-12 col-md-12 col-xs-12" style="padding:5px;">
+    <div class="col-sm-8 col-md-8 col-xs-4  " ng-init="tab_title='Add Contact Details'" style="color:white;font-size:24px;">
+        <span ng-bind="tab_title"></span>
+    </div>
+    <div class="col-sm-4 col-md-4 col-xs-8" style="padding:0pxcolor:white;;">
+        <div class="col-sm-6 col-md-6 col-xs-6" style="padding:5px;">
+            <a href="#/addcontact" ng-click="contact=''"  class="btn btn-md btn-success" style="width:100%;">Add Contact</a>
+        </div>
+        <div class="col-sm-6 col-md-6 col-xs-6" style="padding:5px;">
+            <a href="#/listcontact" ng-click="" class="btn btn-md btn-warning" ng-click="searchcontact=true;" style="width:100%;" >View Contacts</a>
+        </div>
+    </div>
+</div>
+<table class = "table table-hover" id="createcontact_table">
+    <thead>
+        <tr class="active">
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Contact Name</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Mobile Number</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Telephone Number</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Email Id</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">City</th>
+            <th class="col-sm-2 col-md-2 col-xs-2 text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <form name="addcontact">
+        <tr class="info">
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center">
+                <input type="text" name="contactname" style="width:100%;" placeholder="Contact Name" ng-model="contact.Contact_Name" required/>
+            </td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center">
+                <input type="number" min="7000000000" max="9999999999"  name="contactno" style="width:100%;" placeholder="Mobile No" ng-model="contact.Contact_Mobile_No" />
+            </td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center">
+                <input type="tel" name="contacttele" style="width:100%;" placeholder="Telephone No" ng-model="contact.Contact_Telephone_No"/>
+            </td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center">
+                <input type="email" name="contactmail" style="width:100%;" placeholder="Email-Id" ng-model="contact.Contact_Email" ng-pattern="emailFormat" required/>
+            </td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center">
+                <input type="text" name="city" style="width:100%;" placeholder="City" ng-model="contact.Contact_City" googleplace required/>
+            </td>
+            <td class="col-sm-2 col-md-2 col-xs-2 text-center">
+                <div class="col-sm-12 col-md-12 col-xs-12" style="padding:0px;">
+                    <div class="col-sm-12 col-md-6 col-xs-12" style="padding:0px;padding-top:1px;padding-bottom:1px;">
+                        <button ng-if="edit" type="submit" class="btn btn-md btn-primary" ng-click="editcontact(contact)" style="width:80px;">Save</button>
+                        <button ng-if="!edit" type="submit" class="btn btn-md btn-primary" ng-click="savecontact(contact)" style="width:80px;">Save</button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xs-12" style="padding:0px;padding-top:1px;padding-bottom:1px;">
+                        <a href="#/listcontact" class="btn btn-md btn-danger" ng-click="contact='';" style="width:80px;">Cancel</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="alert alert-danger text-center" ng-if="error" ng-show="!contact || (!contact.Contact_Name || !contact.Contact_Mobile_No && !contact.Contact_Telephone_No || !contact.Contact_Email || !contact.Contact_City )">
+        <strong ng-bind="errormessage"></strong>
+</div>
