@@ -22,6 +22,7 @@
             <th class="col-sm-2 col-md-2 col-xs-2 text-center">Action</th>
         </tr>
         <tr class="active">
+            <!--adding table local search for ng-repeat-->
             <td class="col-sm-2 col-md-3 col-xs-2 text-center"><input type="text" style="width:100%;" placeholder="Search.." ng-model="search.Contact_Name"/></td>
             <td class="col-sm-2 col-md-1 col-xs-2 text-center"><input type="text" style="width:100%;" placeholder="Search.." ng-model="search.Contact_Mobile_No"/></td>
             <td class="col-sm-2 col-md-1 col-xs-2 text-center"><input type="text" style="width:100%;" placeholder="Search.." ng-model="search.Contact_Telephone_No"/></td>
@@ -31,6 +32,7 @@
         </tr>
     </thead>
     <tbody>
+        <!--displaying all individual contact details -->
         <tr ng-if="contact_list.length" class= "success" ng-repeat="contact in contact_list | filter:search">
             <td class="col-sm-2 col-md-2 col-xs-2 text-center" ng-bind="contact.Contact_Name"></td>
             <td class="col-sm-2 col-md-2 col-xs-2 text-center" ng-bind="contact.Contact_Mobile_No"></td>

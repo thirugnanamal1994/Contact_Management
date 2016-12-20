@@ -9,7 +9,7 @@ var app=angular.module('contactmanagment_app',['contactmanagment_app.controllers
   });
   $routeProvider.otherwise({redirectTo:'/listcontact'});
 });
-
+//google API for city autocomplete
 app.directive('googleplace', function() {
     return {
         require: 'ngModel',
@@ -28,6 +28,7 @@ app.directive('googleplace', function() {
         }
     };
 })
+//angular directive for confirmation for deletion
 .directive('ngConfirmClick', [
       function(){
           return {
@@ -92,7 +93,7 @@ app.factory('api_service',function(){
     }
     return factory;
 });
-
+//manage dynamic controllers
 angular.module('contactmanagment_app.controllers',[])
 .controller('contact_list_controller',function($scope,$http,api_service,passdata){
     $scope.tab_title='List Contacts';
