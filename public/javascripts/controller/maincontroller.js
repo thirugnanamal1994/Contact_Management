@@ -106,6 +106,7 @@ angular.module('contactmanagment_app.controllers',[])
     };
     $scope.deletecontact=function($contact){
         $http(api_service.deletecontact($contact.Contact_Id)).success(function($data){
+           alert("Contact "+$contact.Contact_Name+" Deleted Successfully");
            $http(api_service.getcontacts()).success(function($data){
                 $scope.contact_list=$data;
             })
