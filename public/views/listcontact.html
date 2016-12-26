@@ -32,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-        <!--displaying all individual contact details -->
+        <!--displaying all individual contact details(populating) -->
         <tr ng-if="contact_list.length" class= "success" ng-repeat="contact in contact_list | filter:search">
             <td class="col-sm-2 col-md-2 col-xs-2 text-center" ng-bind="contact.Contact_Name"></td>
             <td class="col-sm-2 col-md-2 col-xs-2 text-center" ng-bind="contact.Contact_Mobile_No"></td>
@@ -50,12 +50,14 @@
                 </div>
             </td>
         </tr>
+       <!-- error message for search options -->
         <tr class="danger" ng-show="(contact_list | filter:search).length==0">
             <td colspan="6" class="text-center">
                 <span style="font-size:20px;">No Contacts Match !!</span>
                 <br>
             </td>
         </tr>
+        <!-- error message for checking for availbility of contacts -->
         <tr class= "danger" ng-show="!contact_list.length">
             <td colspan="6" class="text-center">
                 <span style="font-size:20px;">No Contacts are Available !!</span>

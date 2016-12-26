@@ -4,10 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+//including the index.js file(routing-inbuild)
 var index = require('./routes/index');
+//including the users.js file(routing-userdefined)
 var users = require('./routes/users');
-
+//create application using the express framework
 var app = express();
 
 // view engine setup
@@ -15,7 +16,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html',require('ejs').renderFile);
 app.set('view engine', 'html');
 
-// uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -25,12 +25,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-
+//invoking methods from connection.js(database creation)
 var connection = require('./connection');
+//invoking routing methods from modelroutes.js(page routing)
 var routes = require('./routes/modelroutes');
 
+//initiate the connection
 connection.init();
 routes.configure(app);
+// specify the desired portnumner
 var server = app.listen(3000, function() {
   console.log('Server listening on port ' + server.address().port);
 });
@@ -53,5 +56,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
+//exporting app to use in other files
 module.exports = app;
